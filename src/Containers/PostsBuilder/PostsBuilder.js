@@ -34,12 +34,12 @@ export class PostsBuilder extends Component {
     if(this.props.posts.length > 0) {
        const pagesNumbers = this.calculatePages(this.props.posts.length);
        for(let i=0; i<pagesNumbers; i++) {
-          pagesButtons.push(<button
+          pagesButtons.push(<button key={'page-num'+i}
           onClick={() => this.changePage(i)}>{i+1}</button>);
        }
     }
     const posts = this.props.posts.slice(this.state.elementsPerPage*(this.state.currentPage), (this.state.currentPage+1)*(this.state.elementsPerPage)).map(post =>(
-      <div style={divStyle}>
+      <div style={divStyle} key={post.id}>
         <Post
           key={post.id}
           title={post.title}
@@ -50,7 +50,7 @@ export class PostsBuilder extends Component {
           clicked={this.props.onRemoveComment}
           sendComment={this.props.onSendcomment}
           loading={this.props.loading} />
-        <button onClick={() => this.props.onFetchComments(post.id)}>Pokaż komentarze</button>
+        <button key={'buton-'+post.id} onClick={() => this.props.onFetchComments(post.id)}>Pokaż komentarze</button>
       </div>
     ))
     return (
