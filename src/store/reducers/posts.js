@@ -2,7 +2,7 @@ import * as actionTypes from '../actions/actionTypes';
 
 
 const initialState = {
-  loading: false,
+  loadingPostCommentID: '',
   posts : [],
 }
 
@@ -16,6 +16,7 @@ const reducer = (state=initialState, action) => {
     case actionTypes.FETCH_COMMENTS_SUCCESS :
     return {
       ...state,
+      loadingPostCommentID: null,
       posts: state.posts.map(post => {
         if(post.id == action.id) {
           post = {...post, comments: action.fetchedComments,}
@@ -61,12 +62,12 @@ const reducer = (state=initialState, action) => {
       case actionTypes.START_FETCHING_COMMENTS:
         return {
           ...state,
-          loading: true,
+          loadingPostCommentID : action.postID,
         }
       case actionTypes.FINISH_FETCHING_COMMENTS:
         return {
           ...state,
-          loading: false,
+          loadingPostCommentID: null,
         }
     }
     return state;

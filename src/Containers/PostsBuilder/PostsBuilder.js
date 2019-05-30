@@ -13,7 +13,7 @@ const divStyle = {
 };
 export class PostsBuilder extends Component {
   state = {
-    elementsPerPage: 20,
+    elementsPerPage: 10,
     currentPage: 0,
   }
   componentDidMount() {
@@ -49,7 +49,7 @@ export class PostsBuilder extends Component {
           comments = {post.comments}
           clicked={this.props.onRemoveComment}
           sendComment={this.props.onSendcomment}
-          loading={this.props.loading} />
+          loadingPostID={this.props.loadingPostID} />
         <button key={'buton-'+post.id} onClick={() => this.props.onFetchComments(post.id)}>Pokaż komentarze</button>
       </div>
     ))
@@ -67,7 +67,7 @@ export class PostsBuilder extends Component {
 const mapStateToProps = state => {
   return {
     posts: state.posts.posts,
-    loading: state.posts.loading,
+    loadingPostID: state.posts.loadingPostCommentID,
   }
 }
 

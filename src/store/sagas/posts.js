@@ -13,11 +13,12 @@ export function* fetchPostsSaga(action) {
       }
       yield put(actions.fetchedSuccess(fetchedPosts));
     } catch (error) {
+      alert(error);
   }
 }
 
 export function* fetchCommentsSaga(action) {
-  yield put(actions.fetchCommentsStart());
+  yield put(actions.fetchCommentsStart(action.id));
   try {
     const response = yield axios.get('https://jsonplaceholder.typicode.com/comments?postId=' + action.id);
     const fetchedComments = [];
@@ -30,11 +31,10 @@ export function* fetchCommentsSaga(action) {
     yield put(actions.fetchCommentsSuccess(fetchedComments, action.id));
     yield put(actions.finishFetchingComments())
   } catch (error) {
-
+    alert(error);
   }
 }
 export function* saveCommentToPostSaga(action) {
-
    let postedCommentsId = [];
    let catchedPosts = yield localStorage.getItem('postID');
    if(!catchedPosts) {

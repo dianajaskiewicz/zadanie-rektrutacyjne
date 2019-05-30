@@ -21,8 +21,8 @@ class CommentForm  extends Component {
   render() {
     return (
       <form style={formStyle}>
-        <input id="name" type="text" placeholder="Imię" name="name" value={this.state.name} onChange={(e) => this.changeInputHandler(e, 'name')} />
-        <input id="body" type="text" placeholder="Treść" name="body" value={this.state.body} onChange={(e) => this.changeInputHandler(e, 'body')} />
+        <input id="name" type="text" placeholder="Name" name="name" value={this.state.name} onChange={(e) => this.changeInputHandler(e, 'name')} />
+        <input id="body" type="text" placeholder="Content" name="body" value={this.state.body} onChange={(e) => this.changeInputHandler(e, 'body')} />
         <input id="email" type="text" placeholder="Email" name="body" value={this.state.email} onChange={(e) => this.changeInputHandler(e, 'email')} />
         <button onClick={(e) => {
             e.preventDefault();
