@@ -45,7 +45,6 @@ export const sendComment = (name,body, email, postID) => {
   }
 }
 export const fetchCommentsStart = (postID) => {
-  console.log(postID)
   return {
     type: actionTypes.START_FETCHING_COMMENTS,
     postID: postID,
